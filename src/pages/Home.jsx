@@ -1,12 +1,9 @@
-// Will be a protected Route
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { useAuthStatus } from '../hooks/useAuthStatus';
-import Spinner from '../components/Spinner';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const { checkingStatus } = useAuthStatus();
   const [data, setData] = useState([
     {
       name: 'Dave',
@@ -64,25 +61,23 @@ const Home = () => {
         </div>
       </div>
 
-      {checkingStatus && <Spinner />}
-
-      {!checkingStatus && (
-        <div className='user-grid py-10 w-4/5 m-auto grid gap-4 sm:gap-0 grid-cols-2 md:grid-cols-3'>
-          {filteredList &&
-            filteredList.map((user, i) => {
-              return (
-                <div className='grid-item' key={i}>
+      <div className='user-grid py-10 w-4/5 m-auto grid gap-4 sm:gap-0 grid-cols-2 md:grid-cols-3'>
+        {filteredList &&
+          filteredList.map((creator, i) => {
+            return (
+              <div className='grid-item' key={i}>
+                <Link to={`/merch/${creator.name}`}>
                   <img
-                    src={user.img}
+                    src={creator.img}
                     alt='Creator'
                     className='cursor-pointer rounded-full border-4 h-[150px] w-[150px]'
                   />
-                  <p>{user.name}</p>
-                </div>
-              );
-            })}
-        </div>
-      )}
+                </Link>
+                <p>{creator.name}</p>
+              </div>
+            );
+          })}
+      </div>
 
       <div className='text-center'>
         {filteredList.length === 0 && (

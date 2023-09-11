@@ -1,7 +1,7 @@
 const LandingPage = () => {
   return (
     <>
-      <div className='h-[90vh] bg-black'>
+      <div className='h-[90vh]'>
         <div className='landing-page-text'>
           <p className='text-first tracking-tight text-[90px] sm:text-[120px] md:text-[140px] lg:text-[170px]'>
             Merch Cafe

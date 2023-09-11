@@ -1,12 +1,12 @@
-// Again a Protected Route
-// 1000px -> Below that hide filter section, Only Merch Display
 import FilterSection from '../creatorMerch/FilterSection';
 import MerchDisplay from '../creatorMerch/MerchDisplay';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const CreatorMerch = () => {
+  const params = useParams();
+
   const [width, setWidth] = useState(window.innerWidth);
-  console.log(width);
 
   const resizeObserver = new ResizeObserver(() => {
     setWidth(window.innerWidth);
@@ -22,7 +22,7 @@ const CreatorMerch = () => {
     <>
       <div className='flex'>
         {checkWidth() && <FilterSection />}
-        <MerchDisplay />
+        <MerchDisplay name={params.creator} />
       </div>
     </>
   );

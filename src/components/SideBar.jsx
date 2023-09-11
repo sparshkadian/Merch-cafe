@@ -24,7 +24,16 @@ const SideBar = ({ sideBar }) => {
           className='close-menu-icon'
           icon={faX}
         />
-        {isLoggedIn && <p>Profile Details:</p>}
+        {isLoggedIn && (
+          <>
+            <p>Profile Details:</p>
+            <p className='cursor-pointer'>ITEM 1</p>
+            <div className='border-2 border-zinc-500'></div>
+            <p className='cursor-pointer'>ITEM 2</p>
+            <div className='border-2 border-zinc-500'></div>
+            <p className='cursor-pointer'>ITEM 3</p>
+          </>
+        )}
         {!isLoggedIn && (
           <div className='flex ml-10 mb-5 gap-7 text-white'>
             <Link to='/signup'>
@@ -46,11 +55,6 @@ const SideBar = ({ sideBar }) => {
             </Link>
           </div>
         )}
-        <p className='cursor-pointer'>ITEM 1</p>
-        <div className='border-2 border-zinc-500'></div>
-        <p className='cursor-pointer'>ITEM 2</p>
-        <div className='border-2 border-zinc-500'></div>
-        <p className='cursor-pointer'>ITEM 3</p>
       </motion.div>
     </>
   );

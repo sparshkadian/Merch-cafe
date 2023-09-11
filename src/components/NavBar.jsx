@@ -6,8 +6,11 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useAuthStatus } from './../hooks/useAuthStatus';
 import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 
 const NavBar = () => {
+  const auth = getAuth();
+  // const profilePhoto = auth.currentUser.photoURL;
   const { isLoggedIn } = useAuthStatus();
   const location = useLocation();
   const wrapperRef = useRef();
@@ -32,9 +35,7 @@ const NavBar = () => {
 
   const handleSideBarClose = (value) => {
     setIsMenuOpen(value);
-    wrapperRef.current.style.backgroundColor = `${
-      location.pathname === '/' ? 'none' : '#fff'
-    }`;
+    wrapperRef.current.style.backgroundColor = '#fff';
     wrapperRef.current.style.zIndex = '-10';
   };
 
@@ -47,20 +48,18 @@ const NavBar = () => {
       ></div>
 
       <motion.div
-        className={`${
-          location.pathname === '/' ? 'bg-black' : 'bg-white'
-        } h-[10vh] relative navbar flex justify-between px-4 py-3 items-center`}
+        className={`h-[10vh] relative navbar flex justify-between px-4 py-3 items-center`}
       >
         <Link to='/'>
           <img
             src='../imgs/logo.png'
             alt='site-logo'
-            width={location.pathname === '/' ? 90 : 55}
+            width={55}
             className='site-logo rounded-full'
           />
         </Link>
 
-        {isMenuVisible && !isLoggedIn && (
+        {!isLoggedIn && isMenuVisible && (
           <div className='mr-1 gap-7 text-white'>
             <Link to='/signup'>
               <button
@@ -83,16 +82,31 @@ const NavBar = () => {
         )}
         {isLoggedIn && isMenuVisible && (
           <div className='flex gap-10 items-center mr-2'>
-            <img
-              src='../imgs/dummy-user.png'
-              alt='profile photo'
-              className='rounded-full cursor-pointer bg-white w-[50px] aspect-square'
-            />
+            <Link to='/profile'>
+              {/* {!profilePhoto && (
+                <img
+                  src='../imgs/dummy-user.png'
+                  alt='profile photo'
+                  className='rounded-full cursor-pointer bg-white w-[50px] aspect-square'
+                />
+              )}
+              {profilePhoto && (
+                <img
+                  src={profilePhoto}
+                  alt='profile photo'
+                  className='rounded-full cursor-pointer bg-white w-[50px] aspect-square'
+                />
+              )} */}
+              <img
+                src='../imgs/dummy-user.png'
+                alt='profile photo'
+                className='rounded-full cursor-pointer bg-white w-[50px] aspect-square'
+              />
+            </Link>
             <FontAwesomeIcon
               icon={faCartShopping}
               className='cursor-pointer'
               size='2x'
-              color={`${location.pathname === '/' ? '#fff' : '#000'}`}
             />
           </div>
         )}
@@ -102,7 +116,6 @@ const NavBar = () => {
             onClick={handleSideBarOpen}
             className='cursor-pointer mr-4 text-[25px]'
             icon={faBars}
-            color={`${location.pathname === '/' ? '#fff' : '#000'}`}
           />
         )}
       </motion.div>
