@@ -3,6 +3,7 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import { sideBarAnimate } from '../utils/motion';
 import { useAuthStatus } from '../hooks/useAuthStatus';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ sideBar }) => {
   const { isLoggedIn } = useAuthStatus();
@@ -26,18 +27,23 @@ const SideBar = ({ sideBar }) => {
         {isLoggedIn && <p>Profile Details:</p>}
         {!isLoggedIn && (
           <div className='flex ml-10 mb-5 gap-7 text-white'>
-            <button
-              className='signupButton nav-button px-6 py-3 rounded-[50px]'
-              type='button'
-            >
-              Sign Up
-            </button>
-            <button
-              type='button'
-              className='loginButton nav-contact px-8 rounded-[50px]'
-            >
-              Log In
-            </button>
+            <Link to='/signup'>
+              <button
+                className='signupButton nav-button px-6 py-3 rounded-[50px]'
+                type='button'
+              >
+                Sign Up
+              </button>
+            </Link>
+
+            <Link to='/login'>
+              <button
+                type='button'
+                className='loginButton nav-contact px-8 py-3 rounded-[50px]'
+              >
+                Log In
+              </button>
+            </Link>
           </div>
         )}
         <p className='cursor-pointer'>ITEM 1</p>

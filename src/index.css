@@ -115,7 +115,7 @@ body {
   background: linear-gradient(to right, #e74c3c, #c0392b);
 }
 
-/* Spinner */
+/*//////////////--SPINNER--//////////// */
 .spinner-body {
   margin: 0;
   padding: 0;
@@ -147,4 +147,58 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*//////////////--CREATOR_PAGE--//////////// */
+.merchPage-filter {
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+}
+
+.checkbox {
+  width: 18px;
+  aspect-ratio: 1/1;
+}
+
+.filter-dividers {
+  border: 1px solid gray;
+}
+
+.creator-info {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+/*//////////////--SignUp and Login--//////////// */
+.form-container {
+  border-radius: 5px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  padding: 20px;
+}
+
+.form-divider::before {
+  content: 'Or';
+  background-color: #fff;
+  padding: 5px;
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn {
+  padding: 12px;
+  border-radius: 6px;
+  background-color: rgb(252, 165, 165);
+  color: white;
 }

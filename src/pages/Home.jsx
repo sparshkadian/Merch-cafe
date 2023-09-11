@@ -2,10 +2,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useAuthStatus } from '../hooks/useAuthStatus';
 import Spinner from '../components/Spinner';
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { checkingStatus } = useAuthStatus();
   const [data, setData] = useState([
     {
       name: 'Dave',
@@ -33,10 +34,6 @@ const Home = () => {
     },
   ]);
   const [filteredList, setFilteredList] = useState(data);
-
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 1000);
 
   const filterSearch = (e) => {
     const query = e.target.value;
@@ -67,9 +64,9 @@ const Home = () => {
         </div>
       </div>
 
-      {isLoading && <Spinner />}
+      {checkingStatus && <Spinner />}
 
-      {!isLoading && (
+      {!checkingStatus && (
         <div className='user-grid py-10 w-4/5 m-auto grid gap-4 sm:gap-0 grid-cols-2 md:grid-cols-3'>
           {filteredList &&
             filteredList.map((user, i) => {

@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import SideBar from './SideBar';
-import { navBarAnimate } from '../utils/motion';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useAuthStatus } from './../hooks/useAuthStatus';
@@ -48,9 +47,6 @@ const NavBar = () => {
       ></div>
 
       <motion.div
-        // variants={location.pathname === '/' ? navBarAnimate : ''}
-        // initial='hidden'
-        // animate='show'
         className={`${
           location.pathname === '/' ? 'bg-black' : 'bg-white'
         } h-[10vh] relative navbar flex justify-between px-4 py-3 items-center`}
@@ -66,18 +62,23 @@ const NavBar = () => {
 
         {isMenuVisible && !isLoggedIn && (
           <div className='mr-1 gap-7 text-white'>
-            <button
-              className='signupButton mr-4 px-8 py-4 rounded-[50px]'
-              type='button'
-            >
-              Sign Up
-            </button>
-            <button
-              type='button'
-              className='loginButton px-8 py-4 rounded-[50px]'
-            >
-              Log In
-            </button>
+            <Link to='/signup'>
+              <button
+                className='signupButton mr-4 px-8 py-4 rounded-[50px]'
+                type='button'
+              >
+                Sign Up
+              </button>
+            </Link>
+
+            <Link to='login'>
+              <button
+                type='button'
+                className='loginButton px-8 py-4 rounded-[50px]'
+              >
+                Log In
+              </button>
+            </Link>
           </div>
         )}
         {isLoggedIn && isMenuVisible && (
