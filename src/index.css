@@ -1,13 +1,150 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Vollkorn:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*//////////////--SIDEBAR--//////////// */
+.sidebar {
+  z-index: 5;
+  position: absolute;
+  padding-top: 5rem;
+  top: 0;
+  right: 0;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  background-color: whitesmoke;
+}
+
+.close-menu-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 2rem;
+}
+
+/*//////////////--LANDING PAGE--//////////// */
+.landing-page-text {
+  background-image: linear-gradient(
+    45deg,
+    #ff5252,
+    #ffd740,
+    #ff4081,
+    #40c4ff,
+    #18ffff
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  top: 15%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.text-second {
+  font-family: 'Volkorn', 'sans-serif';
+  font-style: italic;
+}
+
+/*//////////////--HOME--//////////// */
+.input-text-field {
+  border-right: 2px solid black;
+}
+
+.grid-item {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.up-arrow {
+  cursor: pointer;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  z-index: 999;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+}
+
+/*//////////////--NAVBAR--//////////// */
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+}
+
+.signupButton {
+  background: linear-gradient(to right, #f1c40f, #f39c12);
+}
+.loginButton {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+}
+
+/* Spinner */
+.spinner-body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff; /* White background */
+}
+
+.spinner-container {
+  position: relative;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.3);
+  border-top: 4px solid #0074d9; /* Spinner color (blue in this example) */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
