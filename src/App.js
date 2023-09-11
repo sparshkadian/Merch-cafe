@@ -8,6 +8,7 @@ import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Protected from './components/Protected';
 import ProfileDetails from './pages/ProfileDetails';
+import Fun from './providers/Fun';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -50,6 +51,7 @@ function App() {
             </>
           }
         />
+        <Route exact path='/auth/facebook' element={<Fun />} />
       </Routes>
       <ScrollToTop />
       <ToastContainer autoClose={2000} closeOnClick />
