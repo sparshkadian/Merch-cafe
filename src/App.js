@@ -21,7 +21,7 @@ function App() {
         <Route exact path='/login' element={<LogIn />} />
       </Routes>
       <ScrollToTop />
-      <ToastContainer autoClose={2000} closeOnClick={true} />
+      <ToastContainer autoClose={2000} closeOnClick />
     </BrowserRouter>
   );
 }

@@ -1,16 +1,19 @@
-import { useAuth, onAuthStateChanged, getAuth } from 'firebase/auth';
-import { useState } from 'react';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { useState, useEffect } from 'react';
 
 export const useAuthStatus = () => {
-  const auth = getAuth();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checkingStatus, setCheckingStatus] = useState(true);
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setIsLoggedIn(true);
-    }
-    setCheckingStatus(false);
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      }
+      setCheckingStatus(false);
+    });
   });
+
   return { isLoggedIn, checkingStatus };
 };

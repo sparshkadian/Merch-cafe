@@ -74,6 +74,7 @@ const Home = () => {
                 <div className='grid-item' key={i}>
                   <img
                     src={user.img}
+                    alt='Creator'
                     className='cursor-pointer rounded-full border-4 h-[150px] w-[150px]'
                   />
                   <p>{user.name}</p>

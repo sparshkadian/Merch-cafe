@@ -1,5 +1,4 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -10,7 +9,7 @@ const GoogleAuth = () => {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
 
       navigate('/home');
     } catch (error) {

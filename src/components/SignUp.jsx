@@ -4,6 +4,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useState } from 'react';
+import { app } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import GoogleAuth from '../providers/GoogleAuth';
