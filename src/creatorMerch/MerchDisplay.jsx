@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import CreatorContexts from '../Context/creatorContext';
 
 const MerchDisplay = ({ name }) => {
-  const { creatorData } = useContext(CreatorContexts);
+  const { creatorPhoto } = useContext(CreatorContexts);
 
   return (
     <>
@@ -10,7 +10,7 @@ const MerchDisplay = ({ name }) => {
         <div className='creator-infoContainer relative h-[250px] mt-5'>
           <div className='creator-info'>
             <img
-              src='../imgs/random.jpg'
+              src={creatorPhoto}
               className='cursor-pointer rounded-full border-4 h-[200px] w-[200px]'
             />
             <p className='text-center mt-2 text-[1.8rem]'>Name: {name}</p>

@@ -9,7 +9,7 @@ import { getAuth } from 'firebase/auth';
 
 const Home = () => {
   const { addUser } = useContext(UserContexts);
-  const { creatorData } = useContext(CreatorContexts);
+  const { creatorData, getCreatorPhoto } = useContext(CreatorContexts);
   const [filteredList, setFilteredList] = useState(creatorData);
 
   const auth = getAuth();
@@ -63,6 +63,9 @@ const Home = () => {
                     src={creator.photo}
                     alt='Creator'
                     className='cursor-pointer rounded-full border-4 h-[150px] w-[150px]'
+                    onClick={() => {
+                      getCreatorPhoto(creator.photo);
+                    }}
                   />
                 </Link>
                 <p>{creator.name}</p>

@@ -4,6 +4,7 @@ const CreatorContexts = createContext();
 
 export const CreatorProvider = ({ children }) => {
   const [creatorData, setCreatorData] = useState([]);
+  const [creatorPhoto, setCreatorPhoto] = useState();
 
   useEffect(() => {
     getCreators();
@@ -17,8 +18,14 @@ export const CreatorProvider = ({ children }) => {
     setCreatorData(creators);
   };
 
+  const getCreatorPhoto = (photoUrl) => {
+    setCreatorPhoto(photoUrl);
+  };
+
   return (
-    <CreatorContexts.Provider value={{ creatorData }}>
+    <CreatorContexts.Provider
+      value={{ creatorData, creatorPhoto, getCreatorPhoto }}
+    >
       {children}
     </CreatorContexts.Provider>
   );
