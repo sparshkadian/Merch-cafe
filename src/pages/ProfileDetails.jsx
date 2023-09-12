@@ -11,9 +11,8 @@ const Profile = () => {
     try {
       signOut(auth);
       toast.success('Signed Out');
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
+      navigate('/');
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -23,10 +22,9 @@ const Profile = () => {
     try {
       if (window.confirm('Are u sure u want to delete ur account')) {
         deleteUser(auth.currentUser);
-        setTimeout(() => {
-          navigate('/');
-        }, 1000);
+        navigate('/');
       }
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error('Error Occured, Pls Try Again');

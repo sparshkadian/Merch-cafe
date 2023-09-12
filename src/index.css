@@ -94,7 +94,7 @@ body {
 }
 
 .grid-item {
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;

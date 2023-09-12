@@ -2,8 +2,6 @@ import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import SideBar from './SideBar';
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 import { useAuthStatus } from './../hooks/useAuthStatus';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
@@ -12,7 +10,6 @@ const NavBar = () => {
   const auth = getAuth();
   // const profilePhoto = auth.currentUser.photoURL;
   const { isLoggedIn } = useAuthStatus();
-  const location = useLocation();
   const wrapperRef = useRef();
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -22,8 +19,8 @@ const NavBar = () => {
   const resizeObserver = new ResizeObserver(() => {
     setWidth(window.innerWidth);
     if (width > 640) {
-      setIsMenuVisible(true);
-    } else setIsMenuVisible(false);
+      setIsMenuVisible(false);
+    } else setIsMenuVisible(true);
   });
   resizeObserver.observe(document.querySelector('body'));
 
@@ -41,13 +38,12 @@ const NavBar = () => {
 
   return (
     <>
-      {/* This Wrapper Stuff is dangerous T_T*/}
       <div
         ref={wrapperRef}
         className='wrapper absolute h-screen w-screen z-[-10]'
       ></div>
 
-      <motion.div
+      <div
         className={`h-[10vh] relative navbar flex justify-between px-4 py-3 items-center`}
       >
         <Link to='/'>
@@ -59,7 +55,7 @@ const NavBar = () => {
           />
         </Link>
 
-        {!isLoggedIn && isMenuVisible && (
+        {!isLoggedIn && !isMenuVisible && (
           <div className='mr-1 gap-7 text-white'>
             <Link to='/signup'>
               <button
@@ -80,7 +76,7 @@ const NavBar = () => {
             </Link>
           </div>
         )}
-        {isLoggedIn && isMenuVisible && (
+        {isLoggedIn && !isMenuVisible && (
           <div className='flex gap-10 items-center mr-2'>
             <Link to='/profile'>
               {/* {!profilePhoto && (
@@ -111,14 +107,14 @@ const NavBar = () => {
           </div>
         )}
 
-        {!isMenuVisible && (
+        {isMenuVisible && (
           <FontAwesomeIcon
             onClick={handleSideBarOpen}
             className='cursor-pointer mr-4 text-[25px]'
             icon={faBars}
           />
         )}
-      </motion.div>
+      </div>
       {isMenuOpen && (
         <SideBar
           sideBar={(value) => {
