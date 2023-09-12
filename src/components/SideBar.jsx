@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { sideBarAnimate } from '../utils/motion';
 import { useAuthStatus } from '../hooks/useAuthStatus';
 import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 
 const SideBar = ({ sideBar }) => {
+  const auth = getAuth();
   const { isLoggedIn } = useAuthStatus();
   const closeSideBar = () => {
     sideBar(false);
@@ -26,12 +28,26 @@ const SideBar = ({ sideBar }) => {
         />
         {isLoggedIn && (
           <>
-            <p>Profile Details:</p>
-            <p className='cursor-pointer'>ITEM 1</p>
-            <div className='border-2 border-zinc-500'></div>
-            <p className='cursor-pointer'>ITEM 2</p>
-            <div className='border-2 border-zinc-500'></div>
-            <p className='cursor-pointer'>ITEM 3</p>
+            <p className='text-center'>Profile Details:</p>
+            <img
+              src={auth.currentUser.photoURL}
+              alt='User'
+              className='rounded-full mt-4 mx-auto'
+              width={150}
+              height={150}
+            />
+            <p className='cursor-pointer font-semibold mt-2'>
+              Name:{' '}
+              <span className='font-normal'>
+                {' '}
+                {auth.currentUser.displayName}
+              </span>
+            </p>
+
+            <p className='cursor-pointer font-semibold'>
+              Email:{' '}
+              <span className='font-normal'>{auth.currentUser.email}</span>
+            </p>
           </>
         )}
         {!isLoggedIn && (
