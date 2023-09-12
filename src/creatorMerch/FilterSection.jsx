@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const FilterSection = () => {
-  console.log(window.innerWidth);
   return (
     <div className='merchPage-filter p-5 py-10 text-[1.8rem] w-[307px] px-12'>
       <div className='demo'>

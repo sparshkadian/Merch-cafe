@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import CreatorContexts from '../Context/creatorContext';
+
 const MerchDisplay = ({ name }) => {
+  const { creatorData } = useContext(CreatorContexts);
+  console.log(creatorData);
   return (
     <>
       <div className='merch-display border-2 w-full'>

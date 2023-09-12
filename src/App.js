@@ -11,51 +11,57 @@ import ProfileDetails from './pages/ProfileDetails';
 import Fun from './providers/Fun';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserProvider } from './Context/userContext';
+import { CreatorProvider } from './Context/creatorContext';
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path='/' element={<LandingPage />} />
-        <Route
-          exact
-          path='/home'
-          element={
-            <Protected>
-              <Home />
-            </Protected>
-          }
-        />
-        <Route
-          exact
-          path='/merch/:creator'
-          element={
-            <>
-              <Protected>
-                <CreatorMerch />
-              </Protected>
-            </>
-          }
-        />
-        <Route exact path='/signup' element={<SignUp />} />
-        <Route exact path='/login' element={<LogIn />} />
-        <Route
-          exact
-          path='/profile'
-          element={
-            <>
-              <Protected>
-                <ProfileDetails />
-              </Protected>
-            </>
-          }
-        />
-        <Route exact path='/auth/facebook' element={<Fun />} />
-      </Routes>
-      <ScrollToTop />
-      <ToastContainer autoClose={2000} closeOnClick />
-    </BrowserRouter>
+    <CreatorProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route exact path='/' element={<LandingPage />} />
+            <Route
+              exact
+              path='/home'
+              element={
+                <Protected>
+                  <Home />
+                </Protected>
+              }
+            />
+            <Route
+              exact
+              path='/merch/:creator'
+              element={
+                <>
+                  <Protected>
+                    <CreatorMerch />
+                  </Protected>
+                </>
+              }
+            />
+            <Route exact path='/signup' element={<SignUp />} />
+            <Route exact path='/login' element={<LogIn />} />
+            <Route
+              exact
+              path='/profile'
+              element={
+                <>
+                  <Protected>
+                    <ProfileDetails />
+                  </Protected>
+                </>
+              }
+            />
+            <Route exact path='/auth/facebook' element={<Fun />} />
+          </Routes>
+          <ScrollToTop />
+          <ToastContainer autoClose={2000} closeOnClick />
+        </BrowserRouter>
+      </UserProvider>
+    </CreatorProvider>
   );
 }
 

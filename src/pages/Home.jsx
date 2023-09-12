@@ -1,40 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import UserContexts from '../Context/userContext';
+import CreatorContexts from '../Context/creatorContext';
+import { getAuth } from 'firebase/auth';
 
 const Home = () => {
-  const [data, setData] = useState([
-    {
-      name: 'Dave',
-      img: '../imgs/creator-1.jpg',
-    },
-    {
-      name: 'Christina',
-      img: '../imgs/creator-2.jpg',
-    },
-    {
-      name: 'John',
-      img: '../imgs/creator-3.jpg',
-    },
-    {
-      name: 'Rose',
-      img: '../imgs/creator-4.jpg',
-    },
-    {
-      name: 'tony',
-      img: '../imgs/creator-5.jpg',
-    },
-    {
-      name: 'Mary',
-      img: '../imgs/creator-6.jpg',
-    },
-  ]);
-  const [filteredList, setFilteredList] = useState(data);
+  const { addUser } = useContext(UserContexts);
+  const { creatorData } = useContext(CreatorContexts);
+  const [filteredList, setFilteredList] = useState(creatorData);
+
+  const auth = getAuth();
+  const user = {
+    name: auth.currentUser.displayName,
+    email: auth.currentUser.email,
+    photo: auth.currentUser.photoURL,
+  };
+
+  // On new user signup through firebase adding it to my DB as well -> not a good solution. Needs a fix T_T
+  useEffect(() => {
+    addUser(user);
+  }, []);
 
   const filterSearch = (e) => {
     const query = e.target.value;
-    let updatedList = [...data];
+    let updatedList = [...creatorData];
     updatedList = updatedList.filter((item) => {
       return item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
@@ -68,7 +60,7 @@ const Home = () => {
               <div className='grid-item' key={i}>
                 <Link to={`/merch/${creator.name}`}>
                   <img
-                    src={creator.img}
+                    src={creator.photo}
                     alt='Creator'
                     className='cursor-pointer rounded-full border-4 h-[150px] w-[150px]'
                   />
@@ -80,9 +72,9 @@ const Home = () => {
       </div>
 
       <div className='text-center'>
-        {filteredList.length === 0 && (
+        {/* {filteredList.length === 0 && (
           <p className='text-[2.5rem]'>No Creator Found :(</p>
-        )}
+        )} */}
       </div>
     </>
   );
