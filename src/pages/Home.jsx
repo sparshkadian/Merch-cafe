@@ -53,7 +53,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='user-grid py-10 w-4/5 m-auto grid gap-4 sm:gap-0 grid-cols-2 md:grid-cols-3'>
+      <div className='user-grid py-12 w-4/5 m-auto grid gap-4 sm:gap-0 grid-cols-2 md:grid-cols-3'>
         {filteredList &&
           filteredList.map((creator, i) => {
             return (
@@ -62,7 +62,7 @@ const Home = () => {
                   <img
                     src={creator.photo}
                     alt='Creator'
-                    className='cursor-pointer rounded-full border-4 h-[150px] w-[150px]'
+                    className='cursor-pointer rounded-full border-4 h-[180px] w-[180px]'
                     onClick={() => {
                       getCreatorPhoto(creator.photo);
                     }}

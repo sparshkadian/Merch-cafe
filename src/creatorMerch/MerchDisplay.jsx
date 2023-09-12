@@ -11,7 +11,7 @@ const MerchDisplay = ({ name }) => {
           <div className='creator-info'>
             <img
               src={creatorPhoto}
-              className='cursor-pointer rounded-full border-4 h-[200px] w-[200px]'
+              className='rounded-full border-4 h-[200px] w-[200px]'
             />
             <p className='text-center mt-2 text-[1.8rem]'>Name: {name}</p>
           </div>
