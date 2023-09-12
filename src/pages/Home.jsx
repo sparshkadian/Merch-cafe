@@ -1,11 +1,10 @@
+import { useState, useEffect, useContext } from 'react';
+import { getAuth } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import UserContexts from '../Context/userContext';
 import CreatorContexts from '../Context/creatorContext';
-import { getAuth } from 'firebase/auth';
 
 const Home = () => {
   const { addUser } = useContext(UserContexts);
@@ -75,9 +74,9 @@ const Home = () => {
       </div>
 
       <div className='text-center'>
-        {/* {filteredList.length === 0 && (
+        {filteredList.length === 0 && (
           <p className='text-[2.5rem]'>No Creator Found :(</p>
-        )} */}
+        )}
       </div>
     </>
   );

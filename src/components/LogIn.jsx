@@ -1,10 +1,9 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { toast } from 'react-toastify';
 import GoogleAuth from '../providers/GoogleAuth';
 import FacebookAuth from '../providers/FacebookAuth';
-import { toast } from 'react-toastify';
 
 const LogIn = () => {
   const navigate = useNavigate();

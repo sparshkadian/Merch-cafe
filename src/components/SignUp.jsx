@@ -1,15 +1,14 @@
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { useState } from 'react';
 import { app } from '../firebase.config';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import GoogleAuth from '../providers/GoogleAuth';
 import FacebookAuth from '../providers/FacebookAuth';
-import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const auth = getAuth();

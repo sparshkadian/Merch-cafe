@@ -1,11 +1,10 @@
-import FilterSection from '../creatorMerch/FilterSection';
-import MerchDisplay from '../creatorMerch/MerchDisplay';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import FilterSection from '../creatorMerch/FilterSection';
+import MerchDisplay from '../creatorMerch/MerchDisplay';
 
 const CreatorMerch = () => {
   const params = useParams();
-
   const [width, setWidth] = useState(window.innerWidth);
 
   const resizeObserver = new ResizeObserver(() => {

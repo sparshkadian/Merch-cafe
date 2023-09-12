@@ -31,21 +31,6 @@ const Profile = () => {
     }
   };
 
-  const handleProfileUpdate = async () => {
-    // try {
-    //   await updateProfile(auth.currentUser, {
-    //     // photoURL:
-    //   });
-    //   const docRef = doc(db, 'users', auth.currentUser.uid);
-    //   await updateDoc(docRef, {
-    //     photoUrl: '',
-    //   });
-    //   toast.success('Profile Updated Successfully');
-    // } catch (error) {
-    //   toast.error('Error Updating Profile');
-    // }
-  };
-
   return (
     <>
       <div className='bg-gray-100 shadow-2xl rounded-md mt-10 p-2 py-5 w-[90%] md:w-[70%] lg:w-1/2 m-auto flex flex-col gap-10'>
@@ -54,7 +39,7 @@ const Profile = () => {
         {!profilePhoto && (
           <div className='flex items-center gap-2'>
             <label htmlFor='photo'>Upload Profile Photo:</label>
-            <input onClick={handleProfileUpdate} type='file' id='photo' />
+            <input type='file' id='photo' />
           </div>
         )}
 
