@@ -231,3 +231,7 @@ body {
 .merch-display-card {
   font-family: 'Montserrat', 'sans-serif';
 }
+
+.btn-black {
+  background-color: black;
+}

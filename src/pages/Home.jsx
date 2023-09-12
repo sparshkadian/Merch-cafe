@@ -20,9 +20,9 @@ const Home = () => {
   };
 
   // On new user signup through firebase adding it to my DB as well -> not a good solution. Needs a fix T_T
-  useEffect(() => {
-    addUser(user);
-  }, []);
+  // useEffect(() => {
+  //   addUser(user);
+  // }, []);
 
   const filterSearch = (e) => {
     const query = e.target.value;
