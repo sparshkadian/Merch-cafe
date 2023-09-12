@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAMYVBQMMTqUb399vxfP4cz97AS8dEVhgg',
-  authDomain: 'merch-cafe.firebaseapp.com',
-  projectId: 'merch-cafe',
-  storageBucket: 'merch-cafe.appspot.com',
-  messagingSenderId: '975341036849',
-  appId: '1:975341036849:web:4f923aea8cb68f951f3c10',
+  apiKey: process.env.REAT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REAT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
