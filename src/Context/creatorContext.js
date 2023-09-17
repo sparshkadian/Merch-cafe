@@ -6,9 +6,9 @@ export const CreatorProvider = ({ children }) => {
   const [creatorData, setCreatorData] = useState([]);
   const [creatorPhoto, setCreatorPhoto] = useState();
 
-  useEffect(() => {
-    getCreators();
-  }, []);
+  // useEffect(() => {
+  //   getCreators();
+  // }, []);
 
   const getCreators = async () => {
     const res = await fetch('http://localhost:7000/api/creators');

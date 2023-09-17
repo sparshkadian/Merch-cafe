@@ -7,9 +7,31 @@ import UserContexts from '../Context/userContext';
 import CreatorContexts from '../Context/creatorContext';
 
 const Home = () => {
-  const { addUser } = useContext(UserContexts);
-  const { creatorData, getCreatorPhoto } = useContext(CreatorContexts);
-  const [filteredList, setFilteredList] = useState(creatorData);
+  // hardCoding creator Data for now
+  const data = [
+    {
+      name: 'Christina',
+      email: 'Christina@gmail.com',
+      photo:
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-…',
+    },
+    {
+      name: 'Dave',
+      email: 'dave@gmail.com',
+      photo:
+        'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-…',
+    },
+    {
+      name: 'John',
+      email: 'John@gmail.com',
+      photo:
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-…',
+    },
+  ];
+
+  // const { addUser } = useContext(UserContexts);
+  // const { creatorData, getCreatorPhoto } = useContext(CreatorContexts);
+  const [filteredList, setFilteredList] = useState(data);
 
   const auth = getAuth();
   const user = {
@@ -18,14 +40,14 @@ const Home = () => {
     photo: auth.currentUser.photoURL,
   };
 
-  // On new user signup through firebase adding it to my DB as well -> not a good solution. Needs a fix T_T
+  // On new user signup through firebase adding it to my DB as well -> not a good solution. Needs a fix
   // useEffect(() => {
   //   addUser(user);
   // }, []);
 
   const filterSearch = (e) => {
     const query = e.target.value;
-    let updatedList = [...creatorData];
+    let updatedList = [...data];
     updatedList = updatedList.filter((item) => {
       return item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
@@ -62,9 +84,9 @@ const Home = () => {
                     src={creator.photo}
                     alt='Creator'
                     className='cursor-pointer rounded-full border-4 h-[180px] w-[180px]'
-                    onClick={() => {
-                      getCreatorPhoto(creator.photo);
-                    }}
+                    // onClick={() => {
+                    //   getCreatorPhoto(creator.photo);
+                    // }}
                   />
                 </Link>
                 <p>{creator.name}</p>
